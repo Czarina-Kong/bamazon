@@ -1,4 +1,4 @@
-// Then create a Node application called bamazonCustomer.js.
+// Then create a Node application called bamazonCustomer.js. Running this application will first display all of the items available for sale. Include the ids, names, and prices of products for sale.
 // Dependencies
 var mysql = require("mysql")
 var inquirer = require("inquirer")
@@ -15,10 +15,11 @@ var connection = mysql.createConnection({
 // connect to the mysql server and sql database
 connection.connect(function(err) {
   if (err) throw err
-  // Running this application will first display all of the items available for sale. Include the ids, names, and prices of products for sale.
   queryAllProducts()
   // The app should then prompt users with two messages.
-  start()
+  setTimeout(function(){
+  	start()
+  },1000)
 })
 function queryAllProducts() {
 	connection.query('SELECT * FROM products', function(err, res){
